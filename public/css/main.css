@@ -85,6 +85,8 @@ main {
 .card__actions {
     padding: 1rem;
     text-align: center;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .card__actions button,
@@ -105,4 +107,8 @@ main {
 .btn:active {
   background-color: #00695c;
   color: white;
+}
+
+.btn__padding {
+  padding: 0 5px;
 }
