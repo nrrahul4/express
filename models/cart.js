@@ -45,6 +45,9 @@ module.exports = class Cart {
       if (!err) {
         const updatedCart = { ...JSON.parse(fileContent) };
         const product = updatedCart.products.find((prod) => prod.id === id);
+        if(!product) {
+          return;
+        }
         const productQty = product.qty;
         updatedCart.products = updatedCart.products.filter(
           (prod) => prod.id !== id
@@ -56,5 +59,16 @@ module.exports = class Cart {
         });
       }
     });
+  }
+
+  static getAllCart(cb) {
+    fs.readFile(p, (err, fileContent) => {
+      if(err) {
+        cb(null);
+      } else {
+        const cart = JSON.parse(fileContent);
+        cb(cart);
+      }
+    })
   }
 };
